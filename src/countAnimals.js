@@ -8,8 +8,12 @@ function countAnimals(animal) {
     });
     return felipe;
   }
-  // const { specie: NomeEspecie, sex = sexo } = animal;
+  const { specie: nomeEspecie, sex = 'sexo' } = animal;
+  const especie = data.species.find((specie) => specie.name === nomeEspecie);
+  if (sex === 'sexo') {
+    return especie.residents.length;
+  }
+  return especie.residents.filter((individual) => individual.sex === sex).length;
 }
-
-console.log(countAnimals());
+// console.log(countAnimals());
 module.exports = countAnimals;
